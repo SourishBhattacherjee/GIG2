@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guess It! - Drawing Game</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.socket.io/4.7.2/socket.io.min.js"></script>
+</head>
+<body>
+    <!-- Lobby Screen -->
+    <div id="lobby">
+        <h1>Guess It!</h1>
+        <div class="input-group">
+            <label for="username">Username</label>
+            <input type="text" id="username" placeholder="Enter your name">
+        </div>
+        <button id="create-btn">Create Room</button>
+        <div class="divider">OR</div>
+        <div class="input-group">
+            <label for="room-code">Room Code</label>
+            <input type="text" id="room-code" placeholder="Enter code">
+        </div>
+        <button id="join-btn">Join Room</button>
+    </div>
+
+    <!-- Game Screen -->
+    <div id="game-container">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <div class="players-card">
+                <h3>Players</h3>
+                <div id="players-list">
+                    <!-- Players will be injected here -->
+                </div>
+            </div>
+            <div class="room-info">
+                <p>Room: <span id="display-room-code" style="font-weight: bold; color: var(--accent); cursor: pointer;">#XXXXXX</span></p>
+                <button id="copy-btn" style="width: auto; padding: 5px 10px; margin-top: 5px; background: var(--glass);">Copy Code</button>
+                <button id="start-game-btn" style="display: none;">Start Game</button>
+            </div>
+        </div>
+
+        <!-- Main Area -->
+        <div class="main-area">
+            <div class="top-bar" id="word-display">WAITING...</div>
+            <div class="canvas-container">
+                <canvas id="canvas"></canvas>
+            </div>
+            <div class="toolbar" id="drawer-tools" style="visibility: hidden;">
+                <input type="color" id="color-picker" value="#000000">
+                <input type="range" id="size-picker" min="1" max="20" value="5">
+                <button id="clear-btn" style="width: auto; padding: 5px 15px;">Clear</button>
+            </div>
+        </div>
+
+        <!-- Chat Area -->
+        <div class="chat-area">
+            <div class="messages" id="messages">
+                <div class="message system">Welcome to Guess It!</div>
+            </div>
+            <div class="input-group" style="margin: 0; display: flex; gap: 5px;">
+                <input type="text" id="chat-input" placeholder="Type your guess...">
+                <button id="send-btn" style="width: auto; margin: 0; padding: 0 15px;">Send</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

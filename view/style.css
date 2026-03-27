@@ -1,0 +1,243 @@
+:root {
+  --primary: #6366f1;
+  --primary-hover: #4f46e5;
+  --bg-gradient: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+  --glass: rgba(255, 255, 255, 0.05);
+  --glass-border: rgba(255, 255, 255, 0.1);
+  --text: #f8fafc;
+  --text-muted: #94a3b8;
+  --accent: #10b981;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Outfit', sans-serif;
+}
+
+body {
+  background: var(--bg-gradient);
+  color: var(--text);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+#lobby, #game-container {
+  background: var(--glass);
+  backdrop-filter: blur(12px);
+  border: 1px solid var(--glass-border);
+  border-radius: 24px;
+  padding: 40px;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+  transition: all 0.3s ease;
+}
+
+#lobby {
+  width: 400px;
+  text-align: center;
+}
+
+#lobby h1 {
+  font-size: 2.5rem;
+  margin-bottom: 30px;
+  background: linear-gradient(to right, #818cf8, #c084fc);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.input-group {
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+label {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}
+
+input {
+  width: 100%;
+  padding: 12px 16px;
+  border-radius: 12px;
+  border: 1px solid var(--glass-border);
+  background: rgba(0, 0, 0, 0.2);
+  color: white;
+  transition: border-color 0.2s;
+}
+
+input:focus {
+  outline: none;
+  border-color: var(--primary);
+}
+
+button {
+  width: 100%;
+  padding: 14px;
+  border-radius: 12px;
+  border: none;
+  background: var(--primary);
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.1s;
+  margin-top: 10px;
+}
+
+button:hover {
+  background: var(--primary-hover);
+}
+
+button:active {
+  transform: scale(0.98);
+}
+
+.divider {
+  margin: 20px 0;
+  color: var(--text-muted);
+  display: flex;
+  align-items: center;
+}
+
+.divider::before, .divider::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: var(--glass-border);
+  margin: 0 10px;
+}
+
+#game-container {
+  display: none;
+  width: 95vw;
+  height: 90vh;
+  grid-template-columns: 250px 1fr 300px;
+  gap: 20px;
+  padding: 20px;
+}
+
+/* Sidebar */
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.players-card {
+  flex: 1;
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 16px;
+  padding: 20px;
+  overflow-y: auto;
+}
+
+.player-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  border-bottom: 1px solid var(--glass-border);
+}
+
+.room-info {
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 16px;
+  padding: 15px;
+  text-align: center;
+  border: 1px dashed var(--glass-border);
+}
+
+#display-room-code {
+  display: block;
+  font-size: 1.2rem;
+  margin: 5px 0;
+  color: var(--accent);
+  letter-spacing: 2px;
+}
+
+#copy-btn {
+  font-size: 0.8rem;
+  padding: 8px 12px;
+  background: var(--glass);
+  border: 1px solid var(--glass-border);
+}
+
+#copy-btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+.main-area {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.top-bar {
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 16px;
+  padding: 15px;
+  text-align: center;
+  font-size: 1.5rem;
+  letter-spacing: 4px;
+}
+
+.canvas-container {
+  flex: 1;
+  background: white;
+  border-radius: 16px;
+  cursor: crosshair;
+  position: relative;
+  overflow: hidden;
+}
+
+canvas {
+  width: 100%;
+  height: 100%;
+}
+
+.toolbar {
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 16px;
+  padding: 10px;
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+}
+
+/* Chat Area */
+.chat-area {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.messages {
+  flex: 1;
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 16px;
+  padding: 15px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.message {
+  font-size: 0.9rem;
+}
+
+.message .user {
+  font-weight: bold;
+  color: var(--primary);
+  margin-right: 5px;
+}
+
+.message.system {
+  color: var(--accent);
+  font-style: italic;
+  text-align: center;
+}
